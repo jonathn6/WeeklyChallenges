@@ -86,16 +86,28 @@ namespace ChallengesWithTestsMark8
 
         public int Factorial(int number)
         {
-            if (number<2)
+            if (number < 0)
             {
-                return 1;
+                throw new ArgumentOutOfRangeException();
             }
-            int returnValue = number;
-            for (var i=number-1;i>1;i--)
+            try
             {
-                returnValue = returnValue * i;
+                if (number<2)
+                {
+                    return 1;
+                }
+                int returnValue = number;
+                for (var i=number-1;i>1;i--)
+                {
+                    returnValue = returnValue * i;
+                }
+                return returnValue;
             }
-            return returnValue;
+            catch
+            {
+                throw new ArgumentOutOfRangeException();
+            }
         }
+
     }
 }
